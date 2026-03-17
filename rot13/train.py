@@ -4,10 +4,10 @@ Train a nanochat mini GPT to learn the ROT13 cipher.
 Usage
 -----
     # From the workspace root:
-    python -m dev.rot13.train
-    python -m dev.rot13.train --num-steps 5000
-    python -m dev.rot13.train --resume           # continue from latest checkpoint
-    python -m dev.rot13.train --checkpoint-dir /tmp/rot13
+    python -m rot13.train
+    python -m rot13.train --num-steps 5000
+    python -m rot13.train --resume           # continue from latest checkpoint
+    python -m rot13.train --checkpoint-dir /tmp/rot13
 """
 
 import argparse
@@ -19,7 +19,7 @@ from pathlib import Path
 
 import torch
 
-# Allow both `python -m dev.rot13.train` and `python dev/rot13/train.py`
+# Allow both `python -m rot13.train` and `python dev/rot13/train.py`
 sys.path.insert(0, str(Path(__file__).parent.parent))
 from nanochat.gpt import GPT, GPTConfig
 
@@ -88,7 +88,7 @@ def main():
     parser.add_argument('--seed',         type=int,   default=0)
     # Checkpointing
     parser.add_argument('--save-every',      type=int, default=500, help='Save checkpoint every N steps')
-    parser.add_argument('--checkpoint-dir',  type=str, default='dev/rot13/checkpoints')
+    parser.add_argument('--checkpoint-dir',  type=str, default='rot13/checkpoints')
     parser.add_argument('--resume',          action='store_true', help='Resume from latest checkpoint')
     args = parser.parse_args()
 

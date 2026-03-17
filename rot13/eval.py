@@ -4,10 +4,10 @@ Evaluate a trained ROT13 nanochat model.
 Usage
 -----
     # From the workspace root:
-    python -m dev.rot13.eval                         # loads dev/rot13/checkpoints/latest.pt
-    python -m dev.rot13.eval --checkpoint path/to/step_002999.pt
-    python -m dev.rot13.eval --num-test 1000
-    python -m dev.rot13.eval --interactive           # enter your own words
+    python -m rot13.eval                         # loads dev/rot13/checkpoints/latest.pt
+    python -m rot13.eval --checkpoint path/to/step_002999.pt
+    python -m rot13.eval --num-test 1000
+    python -m rot13.eval --interactive           # enter your own words
 """
 
 import argparse
@@ -75,7 +75,7 @@ def evaluate(model, num_test: int, seed: int, temperature: float) -> tuple[int, 
 
 def main():
     parser = argparse.ArgumentParser(description='Evaluate nanochat mini ROT13 model')
-    parser.add_argument('--checkpoint',   type=str,   default='dev/rot13/checkpoints/latest.pt')
+    parser.add_argument('--checkpoint',   type=str,   default='rot13/checkpoints/latest.pt')
     parser.add_argument('--num-test',     type=int,   default=500)
     parser.add_argument('--interactive',  action='store_true', help='Enter words interactively after eval')
     parser.add_argument('--temperature',  type=float, default=0.0, help='0.0 = greedy; >0 = sampling')
